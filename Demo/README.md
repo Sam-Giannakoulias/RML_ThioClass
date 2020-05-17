@@ -1,4 +1,4 @@
-# Demo: How to Run SRS2020ddG Predictor
+# Demo: How to Generate the Complex for Classification
 
 ## Preperation of the System
 The following demo assumes that the following operations are done in the conda environment gila.
@@ -11,19 +11,12 @@ Non-proteanacious atoms must be removed before Rosetta Simulations.
 ```
 python clean_pdb.py <pdb> <chain id>
 ```
-### Renumber PDB structures
-There are many ways of renumbering the pdb to be from 1 to length of the pdb. It must be continous numbering even across chains.
-### Generating Constraint Files
-We utilize a atom pair constraints of CA atoms with a harmonic potential with a standard deviation of .5 A with an 8 A cutoff. 
-The typical format of this contraint file is AtomPair CA RESNUM1 CA RESNUM2 DIST SD per each line. For example, the first few line of the contraint file can be found below.
-```
-AtomPair CA 1 CA 2 HARMONIC 3.836 0.5
-AtomPair CA 1 CA 3 HARMONIC 7.164 0.5
-AtomPair CA 2 CA 3 HARMONIC 3.796 0.5
-AtomPair CA 2 CA 4 HARMONIC 6.298 0.5
-...
-```
-More info about constraints can be found at <https://www.rosettacommons.org/docs/latest/rosetta_basics/file_types/constraint-file>
+### Renumber and Rechain PDB structures
+Write a simple python script to edit the pdb files such that residues start from 1 and rechain all of the protease atoms to chain A.
+
+### Docking
+
+
 ### Relaxing the Structure
 The structure must be relaxed with the following options. __Note there is no gurantee that SRS2020 will be efficacious if these exact relax protocol options are not used__. The cartesian relax protocol is with constraints, beta16_cart score function, minimizer option of lbfgs_armijo_nonmonotone,minimize bond angles on and dualspace on. 
 
