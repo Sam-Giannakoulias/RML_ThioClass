@@ -20,7 +20,7 @@ If the protease you are interested in has a structural complex with a peptide de
 ```
 '/Rosetta/main/source/bin/FlexPepDocking.static.linuxgccrelease -in:file:s ManualDockedComplex.pdb -pre_pack -pep_refine -nstruct 100 -ex1 -ex2aro -out:pdb'
 ```
-
+For more on FlexPepDock https://www.rosettacommons.org/docs/latest/application_documentation/docking/flex-pep-dock
 Select the lowest enerfy complex from FlexPepDock to be relaxed with constraints.
 
 ### Relaxing the Structure
