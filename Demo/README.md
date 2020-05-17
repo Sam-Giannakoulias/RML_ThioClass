@@ -15,41 +15,30 @@ python clean_pdb.py <pdb> <chain id>
 Write a simple python script to edit the pdb files such that residues start from 1 and rechain all of the protease atoms to chain A.
 
 ### Docking
+If the protease you are interested in has a structural complex with a peptide deposited in the PDB, simply trim and mutate the sequence of the experimental peptide to your sequence of interest. If an experimental complex does not exist, use PyRosetta to pose_from_sequence the peptide you are interested in. You can then relax this peptide. Manually place the peptide into the active site of the cleaned protease. At this point, for either method, FlexPepDock can be used to optimze the binding interaction.
 
+```
+'/Rosetta/main/source/bin/FlexPepDocking.static.linuxgccrelease -in:file:s ManualDockedComplex.pdb -pre_pack -pep_refine -nstruct 100 -ex1 -ex2aro -out:pdb'
+```
+
+Select the lowest enerfy complex from FlexPepDock to be relaxed with constraints.
 
 ### Relaxing the Structure
-The structure must be relaxed with the following options. __Note there is no gurantee that SRS2020 will be efficacious if these exact relax protocol options are not used__. The cartesian relax protocol is with constraints, beta16_cart score function, minimizer option of lbfgs_armijo_nonmonotone,minimize bond angles on and dualspace on. 
+The structure must be relaxed with the following options. __Note there is no gurantee that ThioClass will be efficacious if these exact relax protocol options are not used__. The simple relax protocol is performed with constraints, beta16_cart score function, minimizer option of lbfgs_armijo_nonmonotone, minimize bond angles off and dualspace off, and the following fold tree. 
 
-We also provide an executable to do the relax. We highly recommend that it is used for those unfamiliar with Rosetta. It can be found at this associated google drive link: <https://drive.google.com/drive/folders/1l8n8QAy_Px3pTJ_udO0_I36LMfKv7iqd>
 ```
-.\Constrained_Relaxed_BetaNov16 -p input_pdb -cst constraint_file -o pdb_relaxed -db PATHTOROSETTADATABASE
+foldtree_array = [(active_site_position, 1, -1), 
+(active_site_position, protease_end_position, -1), 
+(active_site_position, amide_carbon_position, 1),
+(amide_carbon_position, ligand_end_position, -1),
+(amide_carbon_position, ligand_start_position, -1)]
+
+Serine Proteases:
+AtomPair  OG ActiveSiteNum C CleavedSiteNum FLAT_HARMONIC 2.75 1.0 1.0	
+
+Cysteine Proteases:
+AtomPair  SG ActiveSiteNum C CleavedSiteNum FLAT_HARMONIC 3.0 1.0 1.0
 ```
-For the specific files in this demo, the command is
-```
-.\Constrained_Relaxed_BetaNov16 -p 1A4Y.pdb -cst 1A4Y_AtomPairConstraints.cst  -o 1A4Y_relaxed.pdb -db /home/sumants/anaconda3/envs/lion/lib/python3.7/site-packages/pyrosetta/database/
-```
-
-#### Executable options
-1. -p   input pdb       (required)
-2. -cst constraint file (required)
-2. -o   output pdb name (required)
-3. -db  database path   (required)
-
-## Making a resfile
-Key to introducing mutations at specfic sites is the resfile. 
-To utilize SRS2020, refer __1A4Y_E287A.resfile__ as an example. 
-
-Briefly, each resfile start with NATRO, which specifies that the input native rotamer is preserved as a default. The next line of the resfile is START,followed by an empty line. The next line is the residue number and residue chain with PIKAA followed by desired mutation.
-```
-NATRO
-START
-
-RESNUM RESCHAIN PIKAA DESIRED_MUTATION
-```
-
-More info for the resfile can be found at https://www.rosettacommons.org/manuals/archive/rosetta3.4_user_guide/d1/d97/resfiles.html.
-
-
 
 ## Running SRS2020 ddG Predictor
 There are two ways to use SRS2020 ddG predictors. The first way is running through the terminal. The second way is running through the Jupyter App interface. This is more acessible for user with limited terminal experience or those wanting a GUI interface.
