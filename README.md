@@ -10,7 +10,7 @@ Download Anaconda Distribution for Python3.7: https://www.anaconda.com/distribut
 Following anaconda installation, download gila.yml file and cd into ~Downloads directory. Type the following commands.
 
 ```
-cd PATH_TO_DIRECTORY_WITH_GILAYML
+cd ~Downloads
 conda activate
 conda env create -f gila.yml
 conda activate gila
