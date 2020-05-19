@@ -41,7 +41,7 @@ AtomPair  SG ActiveSiteNum C CleavedSiteNum FLAT_HARMONIC 3.0 1.0 1.0
 ```
 
 ## Running Thio_Class Predictor
-
+```
 -pdb Your complex of interest, required.
 -data Your posiitons of interest, required. See example for exact formatting.
 -as_res Active Site residue number, required.
@@ -51,7 +51,7 @@ AtomPair  SG ActiveSiteNum C CleavedSiteNum FLAT_HARMONIC 3.0 1.0 1.0
 -d Path to pyrosetta database, require.
 -params NCAA params file, NOT REQUIRED.
 -ncaa_3 3 letter code for NCAA, NOT REQUIRED
-
+```
 Sample command
 
 ./Thio_Class_MasterScript -pdb input.pdb -data SampleData.csv -as_res some_number -cleave_res some_other_number -m Thio_Class_Training.sav -s Thio_Class_Scaled_Training.sav -d ~/pyrosetta/database/ -params mcm.params -ncaa_3 MCM
