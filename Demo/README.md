@@ -42,7 +42,7 @@ AtomPair  SG ActiveSiteNum C CleavedSiteNum FLAT_HARMONIC 3.0 1.0 1.0
 
 ## Running Thio_Class Predictor
 
--pdb Your complex of interest, required.\n
+-pdb Your complex of interest, required.
 -data Your posiitons of interest, required. See example for exact formatting.
 -as_res Active Site residue number, required.
 -cleave_res THe celaved residue number, required.
