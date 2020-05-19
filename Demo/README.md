@@ -41,6 +41,9 @@ AtomPair  SG ActiveSiteNum C CleavedSiteNum FLAT_HARMONIC 3.0 1.0 1.0
 ```
 
 ## Running Thio_Class Predictor
+
+Note the patch files and binary must all be in the same directory. If using a NCAA, the params and rotlib must also be in the same directory.
+
 ```
 -pdb Your complex of interest, required.
 -data Your posiitons of interest, required. See example for exact formatting.
