@@ -40,13 +40,18 @@ Cysteine Proteases:
 AtomPair  SG ActiveSiteNum C CleavedSiteNum FLAT_HARMONIC 3.0 1.0 1.0
 ```
 
-## Running SRS2020 ddG Predictor
-There are two ways to use SRS2020 ddG predictors. The first way is running through the terminal. The second way is running through the Jupyter App interface. This is more acessible for user with limited terminal experience or those wanting a GUI interface.
+## Running Thio_Class Predictor
+Sample command
 
-Files to run this demo can be downloaded from this link due to github size limits.
-https://drive.google.com/open?id=1l8n8QAy_Px3pTJ_udO0_I36LMfKv7iqd
-There are two zip files that will be applicable depending on your circumstances.
-1. Using Jupyter GUI App or do not have rosetta database use __SRS2020_Executable_with_database.zip__
-2. Using terminal executable and have rosetta database use __SRS2020_Executable_wo_database.zip__
-### Model Options
-Within the models folder, there are two models with their two respective scalers. By default, the model utilized is the one trained with the training regression utilized in the published work. This can be used for other works to benchmark against SRS2020. However, we also provide that the model that is trained on the full dataset. This model should be used for production runs to predict ddG. That option can be utilized with -m and -s option specifiying the realtive path to the model and scaler __(i.e -m models/Full_Dataset_Relaxed_Beta16_Min_Model.sav -s   Full_Dataset_Relaxed_Beta16_Min_Model_Scaler.sav)__.
+-pdb Your complex of interest, required.
+-data Your posiitons of interest, required. See example for exact formatting.
+-as_res Active Site residue number, required.
+-cleave_res THe celaved residue number, required.
+-m Model, required.
+-s Scaler, required.
+-d Path to pyrosetta database, require.
+-params NCAA params file, NOT REQUIRED.
+-ncaa_3 3 letter code for NCAA, NOT REQUIRED
+
+./Thio_Class_MasterScript -pdb input.pdb -data SampleData.csv -as_res some_number -cleave_res some_other_number -m Thio_Class_Training.sav -s Thio_Class_Scaled_Training.sav -d ~/pyrosetta/database/ -params mcm.params -ncaa_3 MCM
+
