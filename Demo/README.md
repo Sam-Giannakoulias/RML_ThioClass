@@ -42,6 +42,20 @@ AtomPair  SG ActiveSiteNum C CleavedSiteNum FLAT_HARMONIC 3.0 1.0 1.0
 
 ## Running Thio_Class Predictor
 
+In order to run Thio_Class, you will unfortunately have to have an additional version of pyrosetta to the one within the Thio_Class virtual env. Or at minimum, you must have a pyrosetta database where you can edit the following files to contain the TS atom.
+
+Path=’~/pyrosetta/database/chemical/atom_type_sets/fa_standard_genpot/’
+* Path + atom_properties.txt
+* Path + extras/ + /soft_rep_params.txt
+* Path + extras/ + gen_born_params.txt
+* Path + extras/ + gen_kirkwood_params.txt
+* Path + extras/ + sasa_radii_legacy.txt
+* Path + extras/ + NACCESS_sasa_radii.txt
+* Path + extras/ + reduce_sasa_radii.txt
+* Path + extras/ + memb_fa_params.txt
+* Path + extras/ + std_charges.txt
+* Path + extras/ + atom_orbital_hybridization.txt
+
 Note the patch files and binary must all be in the same directory. If using a NCAA, the params and rotlib must also be in the same directory.
 
 ```
