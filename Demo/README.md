@@ -71,6 +71,6 @@ Note the patch files and binary must all be in the same directory. If using a NC
 ```
 Sample command
 ```
-./Thio_Class_MasterScript -pdb input.pdb -data SampleData.csv -as_res some_number -cleave_res some_other_number -m Thio_Class_Training.sav -s Thio_Class_Scaled_Training.sav -d ~/pyrosetta/database/ -params mcm.params -ncaa_3 MCM
+./Thio_Class_Executable_final -pdb input.pdb -data SampleData.csv -as_res some_number -cleave_res some_other_number -m Thio_Class_Training.sav -s Thio_Class_Scaled_Training.sav -d ~/pyrosetta/database/ -params mcm.params -ncaa_3 MCM
 ```
 
