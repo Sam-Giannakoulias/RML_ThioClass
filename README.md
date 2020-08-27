@@ -5,8 +5,6 @@ __Authors__: Sam Giannakoulias, Sumant Shringari, John Ferrie, E. James Petersso
 
 Contact us at ejpetersson@sas.upenn.edu
 
-A manuscript regarding this work can be found at https://www.biorxiv.org/content/10.1101/2020.03.17.996066v1
-
 ## Set Up
 Predict positions where a thioamide will imbue proteolytic resistance 
 
